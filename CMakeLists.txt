@@ -235,8 +235,9 @@ ${config_paths}
   )
 
   # Command to lint the Rust application.
+  # Opt-in (`west build -t clippy`): under nix, clippy-driver cannot
+  # resolve cross-target sysroots, and a lint gate shouldn't block builds.
   add_cargo_target_with_zephyr_env(clippy
-    ALL
     OUTPUT run_rust_clippy
     CARGO_ARGS
       clippy
