@@ -92,3 +92,22 @@
     - !Root
   actions:
     - !Labels
+
+# LoRa radios (Semtech SX126x/SX127x). No identifying property, so match on
+# the compatible list. Only a raw instance is needed; the Unda radio arbiter
+# drives the modem through the raw lora_* calls.
+- name: lora
+  cfg: CONFIG_LORA
+  rules:
+    - !Compatible
+      names:
+        - "semtech,sx1261"
+        - "semtech,sx1262"
+        - "semtech,sx1268"
+        - "semtech,sx1272"
+        - "semtech,sx1276"
+      level: 0
+  actions:
+    - !Instance
+      raw: !Myself
+      device: crate::device::lora::Lora

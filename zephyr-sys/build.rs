@@ -113,6 +113,12 @@ fn main() -> anyhow::Result<()> {
         // UART
         .allowlist_item_if("CONFIG_UART_.*", || options.contains("CONFIG_SERIAL"))
         .allowlist_function_if("uart_.*", || options.contains("CONFIG_SERIAL"))
+        // LoRa
+        .allowlist_item_if("lora_.*", || options.contains("CONFIG_LORA"))
+        .allowlist_function_if("lora_.*", || options.contains("CONFIG_LORA"))
+        // Shell (command registration + fprintf, driven from Rust)
+        .allowlist_item_if("shell_.*", || options.contains("CONFIG_SHELL"))
+        .allowlist_function_if("shell_.*", || options.contains("CONFIG_SHELL"))
         // Generate
         .generate()
         .expect("Unable to generate bindings");

@@ -87,6 +87,8 @@ extern int errno;
 
 #include <zephyr/bluetooth/bluetooth.h>
 #include <zephyr/drivers/flash.h>
+#include <zephyr/drivers/lora.h>
+#include <zephyr/shell/shell.h>
 #include <zephyr/logging/log.h>
 #include <zephyr/irq.h>
 
